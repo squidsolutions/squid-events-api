@@ -52,3 +52,220 @@ Standard server-side properties common to every type of event
 
 ## Usage model
 
+Standard usage properties common to every event related to tracking user behavior.
+
+### SessionID
+* key: ux:sessionID
+* methos: withSessionID()
+* string(256)
+* optional
+* this is a persistent ID with session scope, that can be used to group events in the same session. It can be a server-side session identification, or client-side cookie
+* example:
+
+### TransactionID
+* key: ux:transactionID
+* method: withTransactionID()
+* string(256)
+* optional
+* this is a persistent ID that can span multiple application server. It can be used to correlate events submitted from different systems but used to fulfil the same user request
+* example: 
+
+### UserID
+* key: ux:userID
+* method: withUserID()
+* string(256)
+* optional
+* this is an internal ID that possibly identify uniquely the user
+* example: if the user can sign-in the application, that can be it’s user ID
+
+### ClientIP:
+* key: ux:clientIP
+* method: withClientIP()
+* string(100)
+* mandatory 
+* Client’s IP (V4 or V6)
+* example: 
+
+### pageViewURL:
+* key: ux:pageViewURL
+* method: withPageViewURL()
+* string(4000)
+* mandatory
+* this is the full URL (domain, path, query string + anchors ...) requested
+* example: 
+
+### HttpReturnCode:
+* key: ux:httpReturnCode
+* method: withHttpReturnCode()
+* smallint
+* optional
+* HTTP return code send back by the server to the client
+* example: 
+
+### ErrorCode:
+* key: ux:errorCode
+* method: withErrorCode()
+* string(100)
+* optional
+* Any error text that would be interesting to report, send back to the client from the server
+* example: 
+
+## Account Model
+
+Properties allowing to identify the Account associated with the user.
+
+### AccountID
+* key: pub:accountID
+* method: withAccountID()
+* string(256)
+* mandatory
+* this is an internal ID of the user account. It must allow to retrieve account reference data.
+* example:
+
+### AuthenticationMethod
+* key: pub:authMethod
+* method: withAuthenticationMethod()
+* string(50)
+* mandatory
+* this is a reference code that define how the user gain access to the Account
+* example: it can be IP based authentication, guest account, sign-in...
+
+## Session Model
+
+Properties to track session level events
+
+### BrowserID
+* key: ss:browserID
+* method: withBrowserID()
+* string(256)
+* optional
+* this is a persistent ID associated with the browser (or rich application) generating the event on the client side. Usually it will be retrieve from a cookie
+* example:
+
+### ReferrerURL:
+* key: ss:referrer
+* method: withReferrerURL()
+* string(4000)
+* mandatory but value can be null
+* this is the full referrer’s URL (domain, path, query string + anchors ...) requested
+* example: 
+
+### UserAgent:
+* key: ss:userAgent
+* method: withUserAgent()
+* string(4000)
+* mandatory but value can be null
+* UserAgent string send back by the client
+* example: 
+
+## Search Model
+
+Properties to track search events
+
+### SearchTerms:
+* key: sx:terms
+* method: withTerms()
+* string(4000)
+* optional
+* Search term entered,
+* example: 
+
+### SearchFilters:
+* key: sx:filters
+* method: withFilters()
+* string(4000) - List of key/values 
+* optional
+* Any set of key/value pairs that identify a filter & options (multiple choice supported) selected to filter the search results
+* example: 
+
+### SearchEngine:
+* key: sx:engine
+* method: withEngine()
+* string(100)
+* optional
+* Type of search engine used to resolve the search 
+* example: quick/basic, advanced, ...
+
+### SearchResultCount:
+* key: sx:resultCount
+* method: withResultCount()
+* Recall size, number of results
+* optional
+* Size of the full recall
+* example: 
+
+### SearchResultPage:
+* key: sx:resultPage
+* method: withResultPage()
+* smallint
+* optional
+* Page # currently displayed
+* example: 
+
+### SearchResultID
+* key: sx:resultID
+* method: withResultID()
+* string(256)
+* optional
+* allow to identify the search that leads to further display, see DisplaySearchOriginID
+* example:
+
+## Retrieval Model
+
+Properties to track retrieval events.
+
+### SearchOriginID
+* key: rt:searchOriginID
+* method: withSearchOriginID()
+* string(256)
+* optional
+* identify the search that leads to that display, see SearchresultID
+* example:
+
+### ContentReferenceID
+* key: rt:contentRefID
+* method: withContentReferenceID()
+* string(256)
+* optional
+* identify the actual content
+* example: ID of an image, video, article, journal…
+
+### ContentReferenceArticle
+* key: rt:contentRefArticle
+* method: withContentReferenceArticle()
+* Object - Article Model  
+* optional
+* if the content is not referenced by an ID, provide a Article model object with actual definition
+* example:
+
+### ContentType
+* key: rt:contentType
+* method: withContentType()
+* String(256)
+* optional
+* the content type of the artifact retrieved. It should be a reference value.
+* example: ID of an image, video, article, journal…
+
+### DisplayFormat:
+* key: rt:displayFormat
+* method: withDisplayFormat()
+* string(32)
+* optional
+* reference the display format
+* example: JPEG, HTML, ABSTRACT, PDF
+
+### ContentOwnerID:
+* key: rt:contentOwner
+* method: withContentOwnerID()
+* string(256)
+* optional
+* identify the accountID that owns the content for the actual viewer
+* example:
+
+### Entitlement
+* key: rt:contentEntitlement
+* method: withEntitlement()
+* string(256)
+* optional
+* define the entitlement for that account/display
+* example
