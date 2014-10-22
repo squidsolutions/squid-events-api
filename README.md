@@ -363,3 +363,99 @@ It extends from the Account model.
 * optional
 * define the entitlement for that account/display
 * example
+
+### Article Model
+
+Properties allowing to extensively describe an article, when not able to reference it by ID.
+
+#### ContentType
+* key: art:contentType
+* method: withContentType()
+* string(256)
+* optional
+* type of content that has been retrieved.
+* example: Dissertation, Newspapers, Book...
+
+#### Language
+* key: art:language
+* method: withLanguage()
+* string(64)
+* optional
+* International code of the language in which the content is made.
+* Example: Swahili
+
+#### Discipline
+* key: art:discipline
+* method: withDiscipline()
+* string(256)
+* optional
+* Academic subject matter the content relates to
+* Example: mechanical engineering
+
+#### ReferenceSource
+* key: art:source
+* method: withReferenceSource()
+* string(256)
+* optional
+* Name of the source from which the reference was imported
+* Examples: Google Scholar, Pubmed
+
+#### ReferenceSourceType
+* key: art:sourceType
+* method: withReferenceSourceType()
+* string(256):
+* optional
+* Name of category of grouping of reference sources
+* example:
+
+#### PublicationTitle
+* key: art:pubTitle
+* method: withPublicationTitle()
+* string(1000)
+* optional
+* Name of the journal the article was published in
+* Example: International Journal of Sexuality and Gender Studies
+
+#### ArticleDBID
+* key: art:dbid
+* method: withDBID()
+* string(64)
+* optional
+* Identification of the database the journal belongs to
+* Example: ABI Inform
+
+#### ArticleISSN:
+* key: art:issn
+* method: withISSN()
+* string(64)
+* optional
+* When applicable: ISSN if the article is published in a periodical
+* Example:
+
+#### ArticleISBN:
+* key: art:isbn
+* method: withISBN()
+* string(64)
+* optional
+* When applicable: ISBN if the article is published in a book
+* Example:
+
+#### ArticleDOI:
+* key: art:doi
+* method: withDOI()
+* string(64)
+* optional
+* When applicable: Digital Object Identifier of the article
+* example:
+
+#### ArticleCustomID
+* key: art:customID
+* method: withCustomID()
+* string(64)
+* optional
+* Internal ID of the article in your database
+* example:
+
+
+
+
