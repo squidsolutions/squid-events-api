@@ -88,7 +88,12 @@ EventModel event = new RetrievalEvent()
 
 ## Event Model
 
-This is a documentation of the event model. It's break-down in several sections coverring the different part of the model (schemas). Each schema provides a set of properties. The schemas can be combined to model rich type of events.
+This is a documentation of the event model. 
+It's break-down in several sections coverring the different part of the model (schemas). 
+Each schema provides a set of properties. 
+The schemas are organized in a simple hierarchy to combine properties.
+
+![Event model hierarchy](event-hierarchy.png?raw=true "Event Model Hierarchy")
 
 ### Base model
 
