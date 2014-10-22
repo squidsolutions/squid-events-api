@@ -39,11 +39,11 @@ It can also include reference to Article model.
 
 This is a documentation of the event model. It's break-down in several sections coverring the different part of the model (schemas). Each schema provides a set of properties. The schemas can be combined to model rich type of events.
 
-## Base model
+### Base model
 
 Standard server-side properties common to every type of event
 
-### SchemaName
+#### SchemaName
 * key: xx:schemaName
 * method: EventModel.withSchemaName()
 * type: String
@@ -51,7 +51,7 @@ Standard server-side properties common to every type of event
 * the name of the schema that event belongs to
 * example: retrieval:pub_1.0
 
-### EventType
+#### EventType
 * key: xx:eventType
 * method: EventModel.withEventType()
 * type: String
@@ -59,7 +59,7 @@ Standard server-side properties common to every type of event
 * the type of event; it is possible to have several different event types for the same schema
 * example: display
 
-### EventDate
+#### EventDate
 * key: xx:eventDate
 * method: EventModel.withEventDate()
 * type: long
@@ -67,7 +67,7 @@ Standard server-side properties common to every type of event
 * the timestamp for the event, in GMT-0, format yyyy-MM-dd kk:mm:ss.SSS
 * example:
 
-### EventTimezone
+#### EventTimezone
 * key: xx:eventTMZ
 * method: EventModel.withEventTimeZone()
 * type: string
@@ -75,7 +75,7 @@ Standard server-side properties common to every type of event
 * the Date timezone if the date is not GMT-0
 * example:
 
-### ServerIP
+#### ServerIP
 * key: xx:serverIP
 * method: EventModel/withServerIP()
 * type:string
@@ -83,12 +83,12 @@ Standard server-side properties common to every type of event
 * the server IP. Note that the Event Tracker server can set the value afterward.
 * example:
 
-## Usage model
+### Usage model
 
 Standard usage properties common to every event related to tracking user behavior.
 It extends from the base model.
 
-### SessionID
+#### SessionID
 * key: ux:sessionID
 * methos: withSessionID()
 * string(256)
@@ -96,7 +96,7 @@ It extends from the base model.
 * this is a persistent ID with session scope, that can be used to group events in the same session. It can be a server-side session identification, or client-side cookie
 * example:
 
-### TransactionID
+#### TransactionID
 * key: ux:transactionID
 * method: withTransactionID()
 * string(256)
@@ -104,7 +104,7 @@ It extends from the base model.
 * this is a persistent ID that can span multiple application server. It can be used to correlate events submitted from different systems but used to fulfil the same user request
 * example: 
 
-### UserID
+#### UserID
 * key: ux:userID
 * method: withUserID()
 * string(256)
@@ -112,7 +112,7 @@ It extends from the base model.
 * this is an internal ID that possibly identify uniquely the user
 * example: if the user can sign-in the application, that can be it’s user ID
 
-### ClientIP:
+#### ClientIP:
 * key: ux:clientIP
 * method: withClientIP()
 * string(100)
@@ -120,7 +120,7 @@ It extends from the base model.
 * Client’s IP (V4 or V6)
 * example: 
 
-### pageViewURL:
+#### pageViewURL:
 * key: ux:pageViewURL
 * method: withPageViewURL()
 * string(4000)
@@ -128,7 +128,7 @@ It extends from the base model.
 * this is the full URL (domain, path, query string + anchors ...) requested
 * example: 
 
-### HttpReturnCode:
+#### HttpReturnCode:
 * key: ux:httpReturnCode
 * method: withHttpReturnCode()
 * smallint
@@ -136,7 +136,7 @@ It extends from the base model.
 * HTTP return code send back by the server to the client
 * example: 
 
-### ErrorCode:
+#### ErrorCode:
 * key: ux:errorCode
 * method: withErrorCode()
 * string(100)
@@ -144,12 +144,12 @@ It extends from the base model.
 * Any error text that would be interesting to report, send back to the client from the server
 * example: 
 
-## Account Model
+### Account Model
 
 Properties allowing to identify the Account associated with the user.
 It extends from the Usage model.
 
-### AccountID
+#### AccountID
 * key: pub:accountID
 * method: withAccountID()
 * string(256)
@@ -157,7 +157,7 @@ It extends from the Usage model.
 * this is an internal ID of the user account. It must allow to retrieve account reference data.
 * example:
 
-### AuthenticationMethod
+#### AuthenticationMethod
 * key: pub:authMethod
 * method: withAuthenticationMethod()
 * string(50)
@@ -165,12 +165,12 @@ It extends from the Usage model.
 * this is a reference code that define how the user gain access to the Account
 * example: it can be IP based authentication, guest account, sign-in...
 
-## Session Model
+### Session Model
 
 Properties to track session level events. 
 It extends from the Account model.
 
-### BrowserID
+#### BrowserID
 * key: ss:browserID
 * method: withBrowserID()
 * string(256)
@@ -178,7 +178,7 @@ It extends from the Account model.
 * this is a persistent ID associated with the browser (or rich application) generating the event on the client side. Usually it will be retrieve from a cookie
 * example:
 
-### ReferrerURL:
+#### ReferrerURL:
 * key: ss:referrer
 * method: withReferrerURL()
 * string(4000)
@@ -186,7 +186,7 @@ It extends from the Account model.
 * this is the full referrer’s URL (domain, path, query string + anchors ...) requested
 * example: 
 
-### UserAgent:
+#### UserAgent:
 * key: ss:userAgent
 * method: withUserAgent()
 * string(4000)
@@ -194,12 +194,12 @@ It extends from the Account model.
 * UserAgent string send back by the client
 * example: 
 
-## Search Model
+### Search Model
 
 Properties to track search events.
 It extends from the Account model.
 
-### SearchTerms:
+#### SearchTerms:
 * key: sx:terms
 * method: withTerms()
 * string(4000)
@@ -207,7 +207,7 @@ It extends from the Account model.
 * Search term entered,
 * example: 
 
-### SearchFilters:
+#### SearchFilters:
 * key: sx:filters
 * method: withFilters()
 * string(4000) - List of key/values 
@@ -215,7 +215,7 @@ It extends from the Account model.
 * Any set of key/value pairs that identify a filter & options (multiple choice supported) selected to filter the search results
 * example: 
 
-### SearchEngine:
+#### SearchEngine:
 * key: sx:engine
 * method: withEngine()
 * string(100)
@@ -223,7 +223,7 @@ It extends from the Account model.
 * Type of search engine used to resolve the search 
 * example: quick/basic, advanced, ...
 
-### SearchResultCount:
+#### SearchResultCount:
 * key: sx:resultCount
 * method: withResultCount()
 * Recall size, number of results
@@ -231,7 +231,7 @@ It extends from the Account model.
 * Size of the full recall
 * example: 
 
-### SearchResultPage:
+#### SearchResultPage:
 * key: sx:resultPage
 * method: withResultPage()
 * smallint
@@ -239,7 +239,7 @@ It extends from the Account model.
 * Page # currently displayed
 * example: 
 
-### SearchResultID
+#### SearchResultID
 * key: sx:resultID
 * method: withResultID()
 * string(256)
@@ -247,12 +247,12 @@ It extends from the Account model.
 * allow to identify the search that leads to further display, see DisplaySearchOriginID
 * example:
 
-## Retrieval Model
+### Retrieval Model
 
 Properties to track retrieval events.
 It extends from the Account model.
 
-### SearchOriginID
+#### SearchOriginID
 * key: rt:searchOriginID
 * method: withSearchOriginID()
 * string(256)
@@ -260,7 +260,7 @@ It extends from the Account model.
 * identify the search that leads to that display, see SearchresultID
 * example:
 
-### ContentReferenceID
+#### ContentReferenceID
 * key: rt:contentRefID
 * method: withContentReferenceID()
 * string(256)
@@ -268,7 +268,7 @@ It extends from the Account model.
 * identify the actual content
 * example: ID of an image, video, article, journal…
 
-### ContentReferenceArticle
+#### ContentReferenceArticle
 * key: rt:contentRefArticle
 * method: withContentReferenceArticle()
 * Object - Article Model  
@@ -276,7 +276,7 @@ It extends from the Account model.
 * if the content is not referenced by an ID, provide a Article model object with actual definition
 * example:
 
-### ContentType
+#### ContentType
 * key: rt:contentType
 * method: withContentType()
 * String(256)
@@ -284,7 +284,7 @@ It extends from the Account model.
 * the content type of the artifact retrieved. It should be a reference value.
 * example: ID of an image, video, article, journal…
 
-### DisplayFormat:
+#### DisplayFormat:
 * key: rt:displayFormat
 * method: withDisplayFormat()
 * string(32)
@@ -292,7 +292,7 @@ It extends from the Account model.
 * reference the display format
 * example: JPEG, HTML, ABSTRACT, PDF
 
-### ContentOwnerID:
+#### ContentOwnerID:
 * key: rt:contentOwner
 * method: withContentOwnerID()
 * string(256)
@@ -300,7 +300,7 @@ It extends from the Account model.
 * identify the accountID that owns the content for the actual viewer
 * example:
 
-### Entitlement
+#### Entitlement
 * key: rt:contentEntitlement
 * method: withEntitlement()
 * string(256)
