@@ -15,6 +15,19 @@ This event includes properties from the following models:
 * Account Model
 * Usage Model
 
+Following is a example of creating a Session event based on the Session model (in Java code):
+```
+// create the new session event
+EventModel event = new StartSessionEvent()
+    .withReferrerURL("https://google.com")
+    .withUserAgent("chrome")
+    .withAccountID("university")
+    .withAuthenticationMethod("IP")
+    .withSessionID("123")
+    .withPageViewURL("http://myapp/landingpage")
+    .withUserID("abc");
+```
+
 ### Search Event
 
 This event is created when a user performs a search in the application. It allows to define the search parameter and also to collect information regarding the search results.
@@ -23,6 +36,21 @@ This event includes properties from the following models:
 * Search Model
 * Account Model
 * Usage Model
+
+Following is a example of creating a Search event based on the Search model (in Java code):
+```
+// create the search event
+EventModel searchEvent = new SearchEvent()
+    .withEngine("quick")
+    .withFilters("format=pdf")
+    .withResultCount(100)
+    .withResultID("x1234")
+    .withResultPage(1)
+    .withTerms("some search terms")
+    .withSessionID("123")
+    .withUserID("abc");
+```
+
 
 ### Retrieval Event
 
@@ -34,6 +62,29 @@ This event includes properties from the following models:
 * Usage Model
 
 It can also include reference to Article model.
+
+Following is a example of creating a Retrieval event based on the Retrieval model and Article Model (in Java code):
+```
+// first create an Article model with the displayed article properties
+ArticleModel article = new ArticleModel()
+	.withContentType("article")
+	.withDiscipline("science")
+	.withJournal("nature")
+// more properties here...
+;
+// then create the retrieval event
+EventModel event = new RetrievalEvent()
+	.withContentOwnerID("myUniversity")
+	.withContentType("article")
+	.withDisplayFormat("PDF")
+	.withEntitlement("myUnivertsity")
+	.withContentReferenceArticle(article)// reference the article
+	.withClientIP("127.0.0.1")
+	.withSessionID("1234")
+	.withUserID("sergio")
+	.withPageViewURL("http://myapp/contentPage")
+	.withServerIP("127.0.0.1");
+```
 
 ## Event Model
 
