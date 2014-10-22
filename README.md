@@ -2,11 +2,44 @@
 
 The event-tracker API documentation.
 
+## Event Types
+
+The API defines 3 types of events
+
+### Session Event
+
+This event is created when a new session is created by the application. It allows to define the session origine, the browser type, and also to assign a unique browser ID.
+
+This event includes properties from the following models:
+* Session Model
+* Account Model
+* Usage Model
+
+### Search Event
+
+This event is created when a user performs a search in the application. It allows to define the search parameter and also to collect information regarding the search results.
+
+This event includes properties from the following models:
+* Search Model
+* Account Model
+* Usage Model
+
+### Retrieval Event
+
+This event is created when a user requests an article. It allows to define the article & display  properties, the entitlement rule and account owner.
+
+This event includes properties from the following models:
+* Retrieval Model
+* Account Model
+* Usage Model
+
+It can also include reference to Article model.
+
 ## Event Model
 
 This is a documentation of the event model. It's break-down in several sections coverring the different part of the model (schemas). Each schema provides a set of properties. The schemas can be combined to model rich type of events.
 
-## Base model (EventModel)
+## Base model
 
 Standard server-side properties common to every type of event
 
@@ -53,6 +86,7 @@ Standard server-side properties common to every type of event
 ## Usage model
 
 Standard usage properties common to every event related to tracking user behavior.
+It extends from the base model.
 
 ### SessionID
 * key: ux:sessionID
@@ -113,6 +147,7 @@ Standard usage properties common to every event related to tracking user behavio
 ## Account Model
 
 Properties allowing to identify the Account associated with the user.
+It extends from the Usage model.
 
 ### AccountID
 * key: pub:accountID
@@ -132,7 +167,8 @@ Properties allowing to identify the Account associated with the user.
 
 ## Session Model
 
-Properties to track session level events
+Properties to track session level events. 
+It extends from the Account model.
 
 ### BrowserID
 * key: ss:browserID
@@ -160,7 +196,8 @@ Properties to track session level events
 
 ## Search Model
 
-Properties to track search events
+Properties to track search events.
+It extends from the Account model.
 
 ### SearchTerms:
 * key: sx:terms
@@ -213,6 +250,7 @@ Properties to track search events
 ## Retrieval Model
 
 Properties to track retrieval events.
+It extends from the Account model.
 
 ### SearchOriginID
 * key: rt:searchOriginID
