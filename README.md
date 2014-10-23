@@ -321,7 +321,7 @@ It extends from the Account model.
 * method: withContentReferenceID()
 * string(256)
 * optional
-* identify the actual content
+* the reference of the content. Must be a valid reference in the meta-data source.
 * example: ID of an image, video, article, journal…
 
 #### ContentReferenceArticle
@@ -337,15 +337,15 @@ It extends from the Account model.
 * method: withContentType()
 * String(256)
 * optional
-* the content type of the artifact retrieved. It should be a reference value.
-* example: ID of an image, video, article, journal…
+* the content type of the artifact retrieved
+* example: image, video, article, journal…
 
 #### DisplayFormat:
 * key: rt:displayFormat
 * method: withDisplayFormat()
 * string(32)
 * optional
-* reference the display format
+* the display format value
 * example: JPEG, HTML, ABSTRACT, PDF
 
 #### ContentOwnerID:
@@ -353,7 +353,7 @@ It extends from the Account model.
 * method: withContentOwnerID()
 * string(256)
 * optional
-* identify the accountID that owns the content for the actual viewer
+* the account ID that owns the content. It must be a valid reference in the meta-data source.
 * example:
 
 #### Entitlement
