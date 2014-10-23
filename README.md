@@ -260,7 +260,7 @@ It extends from the Account model.
 * method: withTerms()
 * string(4000)
 * optional
-* Search term entered,
+* Search term entered by the user, 
 * example: 
 
 #### SearchFilters:
@@ -284,15 +284,7 @@ It extends from the Account model.
 * method: withResultCount()
 * Recall size, number of results
 * optional
-* Size of the full recall
-* example: 
-
-#### SearchResultPage:
-* key: sx:resultPage
-* method: withResultPage()
-* smallint
-* optional
-* Page # currently displayed
+* Total number of search results
 * example: 
 
 #### SearchResultID
@@ -300,8 +292,16 @@ It extends from the Account model.
 * method: withResultID()
 * string(256)
 * optional
-* allow to identify the search that leads to further display, see DisplaySearchOriginID
+* UUID associated with the original search event. Can be used to link event initiated from the search result page, for example going to next page or reference retrieval.
 * example:
+
+#### SearchResultPage:
+* key: sx:resultPage
+* method: withResultPage()
+* smallint
+* optional
+* Page number currently displayed. Should be 1 for the first result page, then 2 if the user click next. You can use the SearchResultID to group several pages within the same search
+* example: 
 
 ### Retrieval Model
 
