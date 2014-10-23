@@ -1,6 +1,13 @@
 # squid-events-api
 
-The event-tracker API documentation.
+This is the event-tracker API documentation.
+It presents the supported event types, and the event model used to describe them.
+
+If you are looking to implement event-tracking in your application, consider using a SDK for your plateform:
+* for Java, Scala: https://github.com/squidsolutions/squid-events-client-java
+* for .NET: https://github.com/squidsolutions/squid-events-client-dotnet
+* for Ruby: 
+* for PHP: 
 
 ## Event Types
 
