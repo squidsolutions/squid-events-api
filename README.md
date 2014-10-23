@@ -183,7 +183,7 @@ It extends from the base model.
 * optional
 * this is the full referrer’s URL (domain, path, query string + anchors ...) requested
 * example: 
-* 
+
 #### pageViewURL:
 * key: ux:pageViewURL
 * method: withPageViewURL()
@@ -210,15 +210,17 @@ It extends from the base model.
 
 ### Account Model
 
-Properties allowing to identify the Account associated with the user.
-It extends from the Usage model.
+Properties allowing to identify the institution Account that the user belongs to.
+
+It inhrits from:
+ * Usage model
 
 #### AccountID
 * key: pub:accountID
 * method: withAccountID()
 * string(256)
 * mandatory
-* this is an internal ID of the user account. It must allow to retrieve account reference data.
+* this is an internal ID of the institution account. It must be a valid reference from the meta-data.
 * example:
 
 #### AuthenticationMethod
