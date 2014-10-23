@@ -111,7 +111,7 @@ Standard server-side properties common to every type of event
 * key: xx:eventType
 * method: EventModel.withEventType()
 * type: String
-* mandatory
+* optional
 * the type of event; it is possible to have several different event types for the same schema
 * example: display
 
@@ -172,10 +172,18 @@ It extends from the base model.
 * key: ux:clientIP
 * method: withClientIP()
 * string(100)
-* mandatory 
+* optional 
 * Client’s IP (V4 or V6)
 * example: 
 
+#### ReferrerURL:
+* key: ss:referrer
+* method: withReferrerURL()
+* string(4000)
+* optional
+* this is the full referrer’s URL (domain, path, query string + anchors ...) requested
+* example: 
+* 
 #### pageViewURL:
 * key: ux:pageViewURL
 * method: withPageViewURL()
@@ -217,7 +225,7 @@ It extends from the Usage model.
 * key: pub:authMethod
 * method: withAuthenticationMethod()
 * string(50)
-* mandatory
+* optional
 * this is a reference code that define how the user gain access to the Account
 * example: it can be IP based authentication, guest account, sign-in...
 
@@ -234,19 +242,11 @@ It extends from the Account model.
 * this is a persistent ID associated with the browser (or rich application) generating the event on the client side. Usually it will be retrieve from a cookie
 * example:
 
-#### ReferrerURL:
-* key: ss:referrer
-* method: withReferrerURL()
-* string(4000)
-* mandatory but value can be null
-* this is the full referrer’s URL (domain, path, query string + anchors ...) requested
-* example: 
-
 #### UserAgent:
 * key: ss:userAgent
 * method: withUserAgent()
 * string(4000)
-* mandatory but value can be null
+* optional
 * UserAgent string send back by the client
 * example: 
 
@@ -258,15 +258,15 @@ It extends from the Account model.
 #### SearchTerms:
 * key: sx:terms
 * method: withTerms()
-* string(4000)
-* optional
+* string(65000)
+* mandatory
 * Search term entered by the user, 
 * example: 
 
 #### SearchFilters:
 * key: sx:filters
 * method: withFilters()
-* string(4000) - List of key/values 
+* string(65000) - List of key/values 
 * optional
 * Any set of key/value pairs that identify a filter & options (multiple choice supported) selected to filter the search results
 * example: 
