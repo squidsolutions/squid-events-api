@@ -341,7 +341,8 @@ It extends from the Account model.
 * if the content is not referenced by an ID, provide a Article model object with actual definition
 * example:
 
-#### ContentType
+#### ~~ContentType~~
+* Deprecated: use ContentReferenceArticle.ContentType instead
 * key: rt:contentType
 * method: withContentType()
 * String(256)
