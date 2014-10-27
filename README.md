@@ -243,12 +243,12 @@ It inhrits from:
 Properties to track session level events. 
 It extends from the Account model.
 
-#### BrowserID
+#### BrowserUUID
 * key: ss:browserID
-* method: withBrowserID()
+* method: withBrowserUUID()
 * string(256)
 * optional
-* this is a persistent ID associated with the browser (or rich application) generating the event on the client side. Usually it will be retrieve from a cookie
+* this is a persistent UUID associated with the browser (or rich application) generating the event on the client side. Usually it will be retrieve from a cookie
 * example:
 
 #### UserAgent:
