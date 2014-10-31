@@ -9,6 +9,21 @@ If you are looking to implement event-tracking in your application, consider usi
 * for Ruby: 
 * for PHP: 
 
+## Table of Content
+
+* [Event Types](#event-types): list the available events
+  * [Session Event](#session-event): session level event
+  * [Search Event](#search-event): search level event
+  * [Retrieval Event](#retrieval-event): retrieval level event
+* [Event Model](#event-model): list the event model hierarchy
+  * [Base Model](#base-model): server properties (internal)
+  * [Usage Model](#usage-model): generic usage properties common to all events
+  * [Account Model](#account-model): properties relative to the institutional account
+  * [Session Model](#session-model): session level properties
+  * [Search Model](#search-model): search level properties
+  * [Retrieval Model](#retrieval-model): retrieval level properties
+  * [Article Model](#article-model): properties to define an article object
+
 ## Event Types
 
 The API defines 3 types of events
@@ -269,8 +284,8 @@ It extends from the Account model.
 * method: withTerms()
 * string(65000)
 * mandatory
-* Search term entered by the user, 
-* example: 
+* Search term entered by the user
+* example: moby whale
 
 #### SearchFilters:
 * key: sx:filters
@@ -278,7 +293,7 @@ It extends from the Account model.
 * string(65000) - List of key/values 
 * optional
 * Any set of key/value pairs that identify a filter & options (multiple choice supported) selected to filter the search results
-* example: 
+* example: Discipline=java,scala&Language=us,fr
 
 #### SearchEngine:
 * key: sx:engine
