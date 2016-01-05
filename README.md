@@ -15,6 +15,7 @@ If you are looking to implement event-tracking in your application, consider usi
   * [Session Event](#session-event): session level event
   * [Search Event](#search-event): search level event
   * [Retrieval Event](#retrieval-event): retrieval level event
+  * [Interaction Event](#interaction-event): interaction level event
 * [Event Model](#event-model): list the event model hierarchy
   * [Base Model](#base-model): server properties (internal)
   * [Usage Model](#usage-model): generic usage properties common to all events
@@ -26,7 +27,7 @@ If you are looking to implement event-tracking in your application, consider usi
 
 ## Event Types
 
-The API defines 3 types of events
+The API defines 4 types of events
 
 ### Session Event
 
@@ -106,6 +107,45 @@ EventModel event = new RetrievalEvent()
 	.withUserID("sergio")
 	.withPageViewURL("http://myapp/contentPage")
 	.withServerIP("127.0.0.1");
+```
+
+### Interaction Event
+
+This event is created when a user interact with objects. It allow to specify on which content (container) the user interact with, what component is involved if relevant and which action is performed on the container 
+Typical use cases:
+* Add/remove/modify an item in a basket
+* Click event on a content page
+* Create/remove a reference on an item
+* ...
+
+This event includes properties from the following models:
+* Account Model
+* Usage Model
+It can also include reference to Article model.
+
+Following is a example of creating a Interaction event based on the (in Java code):
+```
+// Create the interaction event
+EventModel event = new InteractionEvent ()
+	.withContentId("12345")
+	.withContentType("reference")
+	.withActionType("add")
+	.withContentId("123456")
+	.withContentType("journal")
+	.withInteractionContext(new HashMap<String, Object>(){
+            private static final long serialVersionUID = 7189104737271245194L;
+        {
+            put("a","b");
+            put ("c", 1);
+        }})
+	.withAccountID ("myUniversity")
+	.withAuthenticationMethod ("IPRANGE")
+	.withReferrerURL ("http://google.com")
+	.withHttpReturnCode (202)
+	.withPageViewURL ("http://myDomain.com/landing_page.html")
+	.withSessionID ("1234")
+	.withUserID ("Tom");
+
 ```
 
 ## Event Model
